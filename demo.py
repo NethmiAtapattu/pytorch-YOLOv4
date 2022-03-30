@@ -75,13 +75,10 @@ def detect_video(cfgfile, weightfile,vidfile):
         while(cap.isOpened()):
             # Capture frame-by-frame
             ret, frame = cap.read()
-            if ret == True:
-                # Display the resulting frame
-                cv2.imshow('Frame',frame)
-            else:
-                break
+           
     #When everything done, release the video capture object
-    cap.release()cv2.destroyAllWindows()
+    cap.release()
+    cv2.destroyAllWindows()
     print("Starting the YOLO loop...")
 
     num_classes = m.num_classes
@@ -103,9 +100,9 @@ def detect_video(cfgfile, weightfile,vidfile):
         finish = time.time()
         print('Predicted in %f seconds.' % (finish - start))
 
-        result_img = plot_boxes_cv2(img, boxes[0], savename=None, class_names=class_names)
+        result_img = plot_boxes_cv2(img, boxes[0], savename='result.avi', class_names=class_names)
 
-        cv2.imshow('Yolo demo', result_img)
+        #cv2.imshow('Yolo demo', result_img)
         cv2.waitKey(1)
 
     cap.release()
