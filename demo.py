@@ -78,16 +78,16 @@ def detect_video(cfgfile, weightfile,vidfile):
            
     #When everything done, release the video capture object
     cap.release()
-    cv2.destroyAllWindows()
+    #cv2.destroyAllWindows()
     print("Starting the YOLO loop...")
 
     num_classes = m.num_classes
     if num_classes == 20:
-        namesfile = 'data/classes/voc.names'
+        namesfile = 'data/voc.names'
     elif num_classes == 80:
-        namesfile = 'data/classes/coco.names'
+        namesfile = 'data/coco.names'
     elif num_classes == 2 :
-        namesfile = 'data/classes/custom.names'
+        namesfile = 'data/custom.names'
     class_names = load_class_names(namesfile)
 
     while True:

@@ -1,5 +1,5 @@
-# import sys
-# import time
+import sys
+import time
 # import numpy as np
 # from PIL import Image, ImageDraw
 from numpy import False_
@@ -32,22 +32,23 @@ def detect_video(cfgfile, weightfile,vidfile):
         while(cap.isOpened()):
             # Capture frame-by-frame
             ret, frame = cap.read()
-            if ret == True:
-                # Display the resulting frame
-                cv2.imshow('Frame',frame)
-            else:
-                break
+            # if ret == True:
+            #     # Display the resulting frame
+            #     cv2.imshow('Frame',frame)
+            # else:
+            #     break
     #When everything done, release the video capture object
-    cap.release()cv2.destroyAllWindows()
+    cap.release()
+    
     print("Starting the YOLO loop...")
 
     num_classes = m.num_classes
     if num_classes == 20:
-        namesfile = 'data/classes/voc.names'
+        namesfile = 'data/voc.names'
     elif num_classes == 80:
-        namesfile = 'data/classes/coco.names'
+        namesfile = 'data/coco.names'
     elif num_classes == 2 :
-        namesfile = 'data/classes/custom.names'
+        namesfile = 'data/custom.names'
     class_names = load_class_names(namesfile)
 
     while True:
